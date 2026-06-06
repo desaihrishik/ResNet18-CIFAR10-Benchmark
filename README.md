@@ -1,8 +1,31 @@
-# ResNet-18 CIFAR-10 Benchmark
+# ResNet-18 Performance Optimization & Training Benchmarking
 
-This project contains a set of PyTorch experiments for training and profiling a ResNet-18 style model on the CIFAR-10 image classification dataset.
+This project develops and benchmarks deep learning training pipelines for CIFAR-10 image classification using PyTorch and a ResNet-18 style convolutional neural network.
 
-The experiments focus on practical benchmarking questions: baseline training speed, data loading performance, CPU versus GPU runtime, optimizer behavior, batch normalization impact, and model parameter count.
+The goal is to evaluate how different training and systems-level choices affect model performance, training throughput, resource utilization, and convergence efficiency. The experiments compare SGD and Adam optimizers, CPU versus GPU execution, multi-worker data loading strategies, batch normalization behavior, and profiling output from PyTorch Profiler.
+
+## Technical Highlights
+
+- Implemented ResNet-18 style residual blocks for CIFAR-10 image classification in PyTorch.
+- Built repeatable experiment scripts for benchmarking training speed, accuracy, optimizer behavior, and hardware execution paths.
+- Compared SGD and Adam to observe differences in convergence, runtime, and training dynamics.
+- Benchmarked CPU and CUDA execution to measure the impact of GPU acceleration on training throughput.
+- Evaluated `DataLoader` worker counts to identify input pipeline bottlenecks and improve batch loading efficiency.
+- Used PyTorch Profiler to capture runtime traces and inspect performance hotspots.
+- Measured model parameter count to connect architecture size with compute and memory requirements.
+- Organized experiments behind a single CLI runner for consistent configuration across benchmark runs.
+
+## Benchmarking Scope
+
+This repository is focused on performance engineering for scalable AI training workflows. It explores:
+
+- Training loop efficiency
+- Data loading and preprocessing overhead
+- GPU acceleration versus CPU execution
+- Optimizer tradeoffs between SGD and Adam
+- Batch normalization impact on model behavior
+- Runtime profiling and bottleneck identification
+- Practical computer vision model experimentation on CIFAR-10
 
 ## Project Contents
 
@@ -10,7 +33,7 @@ The experiments focus on practical benchmarking questions: baseline training spe
 | --- | --- |
 | `lab2.py` | Main command-line runner for all experiments. |
 | `c1.py` | Baseline ResNet-18 training experiment. |
-| `c2.py` | Optimized training loop experiment. |
+| `c2.py` | Optimized training loop experiment for throughput comparison. |
 | `c3.py` | DataLoader and I/O worker performance test. |
 | `c4.py` | Worker count comparison during training. |
 | `c5.py` | CPU versus GPU training performance comparison. |
@@ -92,6 +115,19 @@ python lab2.py --exercise c1 --profile
 ```
 
 Profiling can create `trace.json` or trace logs, depending on the experiment. These files are generated outputs and may be replaced by later profiling runs.
+
+## Key Learning Outcomes
+
+This project provided hands-on experience with:
+
+- Deep learning model training and evaluation in PyTorch
+- Residual network architecture design for computer vision
+- CUDA-based GPU acceleration
+- Optimizer selection and convergence analysis
+- Input pipeline tuning with multi-worker data loading
+- PyTorch Profiler based performance diagnosis
+- Training metrics analysis for throughput and accuracy
+- Practical performance engineering for AI systems
 
 ## Dataset
 
