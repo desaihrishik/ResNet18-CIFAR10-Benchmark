@@ -94,10 +94,10 @@ Example with custom training settings:
 python lab2.py --exercise c5 --epochs 10 --batch_size 64 --num_workers 4 --lr 0.01 --optimizer adam
 ```
 
-Run on CPU:
+Run on CPU/GPU:
 
 ```bash
-python lab2.py --exercise c5 --device cpu
+python lab2.py --exercise c5 --device cpu #cuda
 ```
 
 Run on CUDA:
@@ -105,16 +105,6 @@ Run on CUDA:
 ```bash
 python lab2.py --exercise c5 --device cuda
 ```
-
-## Profiling
-
-Some experiments support PyTorch profiling with `--profile`.
-
-```bash
-python lab2.py --exercise c1 --profile
-```
-
-Profiling can create `trace.json` or trace logs, depending on the experiment. These files are generated outputs and may be replaced by later profiling runs.
 
 ## Key Learning Outcomes
 
@@ -132,10 +122,3 @@ This project provided hands-on experience with:
 ## Dataset
 
 The scripts use TorchVision's CIFAR-10 dataset loader. On the first run, the dataset is downloaded into a local `data` directory. Later runs reuse the local copy.
-
-## Notes
-
-- GPU experiments require a working CUDA-enabled PyTorch installation.
-- DataLoader timing can vary between machines and even between runs on the same machine.
-- Higher `num_workers` values are not always faster; the best value depends on CPU, storage, memory, and operating system scheduling.
-- `trace.json` is a generated profiling artifact, not source code.
